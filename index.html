@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows 10风格网页</title>
+    <style>
+        /* 基础样式重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background-color: #f3f3f3;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Windows 10风格标题栏 */
+        .title-bar {
+            background-color: #414141;
+            color: white;
+            padding: 0 20px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #2c2c2c;
+        }
+        
+        .title-text {
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        .window-controls {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .window-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .close-btn { background-color: #ff5f57; }
+        .minimize-btn { background-color: #ffbd2e; }
+        .maximize-btn { background-color: #28ca42; }
+        
+        /* 主内容区域 */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        /* 第一个大块 - 介绍部分 */
+        .intro-section {
+            background-color: white;
+            border-radius: 4px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e1e1;
+        }
+        
+        .intro-section h1 {
+            font-size: 36px;
+            font-weight: 300;
+            color: #0067b8;
+            margin-bottom: 20px;
+            border-left: 4px solid #0067b8;
+            padding-left: 15px;
+        }
+        
+        .intro-text {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #333;
+        }
+        
+        .intro-text p {
+            margin-bottom: 20px;
+        }
+        
+        /* 第二个大块 - 图片网格 */
+        .grid-section {
+            background-color: white;
+            border-radius: 4px;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e1e1e1;
+        }
+        
+        .grid-section h2 {
+            font-size: 28px;
+            font-weight: 300;
+            color: #0067b8;
+            margin-bottom: 30px;
+            border-left: 4px solid #0067b8;
+            padding-left: 15px;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .grid-item {
+            background-color: #f9f9f9;
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #e1e1e1;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+        
+        .item-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid #e1e1e1;
+        }
+        
+        .item-description {
+            padding: 20px;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        /* 占位图片样式 - 当图片未加载时显示 */
+        .placeholder-image {
+            width: 100%;
+            height: 200px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-size: 16px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid #e1e1e1;
+        }
+        
+        /* 图片上传区域 */
+        .upload-section {
+            background-color: white;
+            border-radius: 4px;
+            padding: 30px;
+            margin: 30px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 2px dashed #ddd;
+        }
+        
+        .upload-section h3 {
+            font-size: 24px;
+            font-weight: 300;
+            color: #0067b8;
+            margin-bottom: 20px;
+        }
+        
+        .upload-instructions {
+            background-color: #f0f7ff;
+            padding: 20px;
+            border-radius: 4px;
+            margin: 20px 0;
+            border-left: 4px solid #0067b8;
+        }
+        
+        .code-block {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .main-content {
+                padding: 20px 15px;
+            }
+            
+            .intro-section, .grid-section, .upload-section {
+                padding: 25px;
+            }
+            
+            .intro-section h1 {
+                font-size: 28px;
+            }
+            
+            .grid-section h2 {
+                font-size: 24px;
+            }
+            
+            .upload-section h3 {
+                font-size: 20px;
+            }
+            
+            .grid-container {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title-bar {
+                height: 50px;
+                padding: 0 15px;
+            }
+            
+            .title-text {
+                font-size: 18px;
+            }
+            
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Windows 10风格标题栏 -->
+    <div class="title-bar">
+        <div class="title-text">测试文本</div>
+        <div class="window-controls">
+            <button class="window-btn close-btn" title="关闭"></button>
+            <button class="window-btn minimize-btn" title="最小化"></button>
+            <button class="window-btn maximize-btn" title="最大化"></button>
+        </div>
+    </div>
+    
+    <!-- 主内容区域 -->
+    <div class="main-content">
+        <!-- 第一个大块：大标题和文字介绍 -->
+        <section class="intro-section">
+            <h1>Windows 10 风格网页设计</h1>
+            <div class="intro-text">
+                <p>这款网页采用了Windows 10的设计语言，以棱角分明的界面元素、简洁的布局和现代化的配色方案为特色。Fluent Design系统注重内容层次和视觉美感，为用户提供直观且愉悦的浏览体验。</p>
+                <p>Windows 10风格强调内容优先，通过清晰的排版、适当的间距和微妙的效果，使界面既美观又实用。每个元素都有明确的目的，没有任何多余的装饰，体现了微软现代设计理念。</p>
+                <p>响应式设计确保在不同设备上都能保持良好的视觉效果和用户体验，无论您是在桌面电脑、平板还是手机上访问，都能获得一致的界面呈现。</p>
+            </div>
+        </section>
+        
+        <!-- 图片上传说明区域 -->
+        <section class="upload-section">
+            <h3>如何上传自定义图片</h3>
+            <div class="upload-instructions">
+                <p><strong>请按以下步骤添加自己的图片：</strong></p>
+                <ol>
+                    <li>在项目文件夹中创建名为"images"的文件夹</li>
+                    <li>将您的图片放入"images"文件夹中</li>
+                    <li>修改下面的图片路径，将"design.jpg"等替换为您的实际图片文件名</li>
+                    <li>如果您没有图片，可以使用下方的占位符区域</li>
+                </ol>
+            </div>
+            
+            <p><strong>图片路径示例：</strong></p>
+            <div class="code-block">图片路径: images/您的图片文件名.jpg</div>
+            
+            <p><strong>支持的图片格式：</strong>JPG, PNG, GIF, SVG, WebP</p>
+            <p><strong>建议图片尺寸：</strong>至少600×400像素，以确保清晰度</p>
+        </section>
+        
+        <!-- 第二个大块：图片和文字小块 -->
+        <section class="grid-section">
+            <h2>特色功能展示</h2>
+            <div class="grid-container">
+                <!-- 项目1 -->
+                <div class="grid-item">
+                    <!-- 替换下面这行代码中的图片路径 -->
+                    <img src="images/design.jpg" alt="现代设计" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-image" style="display:none;">design.jpg (图片未找到)</div>
+                    <div class="item-description">Windows 10风格强调简洁的线条和清晰的视觉层次，创造直观的用户界面。</div>
+                </div>
+                
+                <!-- 项目2 -->
+                <div class="grid-item">
+                    <!-- 替换下面这行代码中的图片路径 -->
+                    <img src="images/layout.jpg" alt="响应式布局" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-image" style="display:none;">layout.jpg (图片未找到)</div>
+                    <div class="item-description">自适应布局确保在任何屏幕尺寸上都能提供优秀的浏览体验，从手机到桌面设备。</div>
+                </div>
+                
+                <!-- 项目3 -->
+                <div class="grid-item">
+                    <!-- 替换下面这行代码中的图片路径 -->
+                    <img src="images/animation.jpg" alt="流畅动画" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-image" style="display:none;">animation.jpg (图片未找到)</div>
+                    <div class="item-description">流畅的过渡动画和微交互效果增强用户体验，使操作更加自然直观。</div>
+                </div>
+                
+                <!-- 项目4 -->
+                <div class="grid-item">
+                    <!-- 替换下面这行代码中的图片路径 -->
+                    <img src="images/darkmode.jpg" alt="暗色模式" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-image" style="display:none;">darkmode.jpg (图片未找到)</div>
+                    <div class="item-description">支持浅色和深色主题，根据用户偏好或环境光线自动切换，保护视力。</div>
+                </div>
+                
+                <!-- 项目5 -->
+                <div class="grid-item">
+                    <!-- 替换下面这行代码中的图片路径 -->
+                    <img src="images/cards.jpg" alt="卡片设计" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-image" style="display:none;">cards.jpg (图片未找到)</div>
+                    <div class="item-description">卡片式设计将内容模块化，使信息组织更加清晰，便于用户理解和浏览。</div>
+                </div>
+                
+                <!-- 项目6 -->
+                <div class="grid-item">
+                    <!-- 替换下面这行代码中的图片路径 -->
+                    <img src="images/icons.jpg" alt="简洁图标" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="placeholder-image" style="display:none;">icons.jpg (图片未找到)</div>
+                    <div class="item-description">简洁明了的图标系统帮助用户快速识别功能，提高操作效率和准确性。</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 备用方案：占位图片区域 -->
+        <section class="upload-section">
+            <h3>如果没有自己的图片怎么办？</h3>
+            <p>您可以使用以下免费图库网站获取高质量的图片：</p>
+            <ul>
+                <li><a href="https://unsplash.com" target="_blank">Unsplash</a> - 高质量的免费照片</li>
+                <li><a href="https://pixabay.com" target="_blank">Pixabay</a> - 免费图片和矢量图</li>
+                <li><a href="https://www.pexels.com" target="_blank">Pexels</a> - 免费库存照片</li>
+            </ul>
+            <p>下载图片后，将其放入项目的"images"文件夹中，然后更新上面的图片路径即可。</p>
+        </section>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>© 2023 Windows 10风格网页示例 | 专为GitHub Pages设计 | 使用HTML5和CSS3构建</p>
+    </footer>
+    
+    <script>
+        // 为窗口控制按钮添加简单交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const closeBtn = document.querySelector('.close-btn');
+            const minimizeBtn = document.querySelector('.minimize-btn');
+            const maximizeBtn = document.querySelector('.maximize-btn');
+            
+            // 关闭按钮点击效果
+            closeBtn.addEventListener('click', function() {
+                this.style.backgroundColor = '#d64545';
+                setTimeout(() => {
+                    this.style.backgroundColor = '#ff5f57';
+                }, 200);
+                alert('在实际应用中，点击此处可关闭窗口');
+            });
+            
+            // 最小化按钮点击效果
+            minimizeBtn.addEventListener('click', function() {
+                this.style.backgroundColor = '#e0a91c';
+                setTimeout(() => {
+                    this.style.backgroundColor = '#ffbd2e';
+                }, 200);
+                alert('在实际应用中，点击此处可最小化窗口');
+            });
+            
+            // 最大化按钮点击效果
+            maximizeBtn.addEventListener('click', function() {
+                this.style.backgroundColor = '#1db12f';
+                setTimeout(() => {
+                    this.style.backgroundColor = '#28ca42';
+                }, 200);
+                alert('在实际应用中，点击此处可最大化窗口');
+            });
+            
+            // 为网格项添加点击效果
+            const gridItems = document.querySelectorAll('.grid-item');
+            gridItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    this.style.transform = 'translateY(-8px)';
+                    setTimeout(() => {
+                        this.style.transform = 'translateY(-5px)';
+                    }, 150);
+                });
+            });
+            
+            // 检查图片是否成功加载
+            const images = document.querySelectorAll('.item-image');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    console.log(`图片加载失败: ${this.src}`);
+                });
+                
+                img.addEventListener('load', function() {
+                    console.log(`图片加载成功: ${this.src}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
