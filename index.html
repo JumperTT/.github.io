@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Windows 10风格网页</title>
+    <title>Classroom Liberator</title>
     <style>
         /* 基础样式重置 */
         * {
@@ -245,9 +245,9 @@
     </style>
 </head>
 <body>
-    <!-- Windows 10风格标题栏 -->
+    <!-- Classroom Liberator -->
     <div class="title-bar">
-        <div class="title-text">测试文本</div>
+        <div class="title-text">Classroom Liberator</div>
         <div class="window-controls">
             <button class="window-btn close-btn" title="关闭"></button>
             <button class="window-btn minimize-btn" title="最小化"></button>
@@ -259,104 +259,43 @@
     <div class="main-content">
         <!-- 第一个大块：大标题和文字介绍 -->
         <section class="intro-section">
-            <h1>Windows 10 风格网页设计</h1>
+            <h1>新版介绍</h1>
             <div class="intro-text">
-                <p>这款网页采用了Windows 10的设计语言，以棱角分明的界面元素、简洁的布局和现代化的配色方案为特色。Fluent Design系统注重内容层次和视觉美感，为用户提供直观且愉悦的浏览体验。</p>
-                <p>Windows 10风格强调内容优先，通过清晰的排版、适当的间距和微妙的效果，使界面既美观又实用。每个元素都有明确的目的，没有任何多余的装饰，体现了微软现代设计理念。</p>
-                <p>响应式设计确保在不同设备上都能保持良好的视觉效果和用户体验，无论您是在桌面电脑、平板还是手机上访问，都能获得一致的界面呈现。</p>
+                <p>-加入了杀死小助手的功能</p>
             </div>
         </section>
-        
-        <!-- 图片上传说明区域 -->
-        <section class="upload-section">
-            <h3>如何上传自定义图片</h3>
-            <div class="upload-instructions">
-                <p><strong>请按以下步骤添加自己的图片：</strong></p>
-                <ol>
-                    <li>在项目文件夹中创建名为"images"的文件夹</li>
-                    <li>将您的图片放入"images"文件夹中</li>
-                    <li>修改下面的图片路径，将"design.jpg"等替换为您的实际图片文件名</li>
-                    <li>如果您没有图片，可以使用下方的占位符区域</li>
-                </ol>
+        <section class="intro-section">
+            <h1>下载及使用方式</h1>
+            <div>
+                <p>如果没有小助手:</p>
+                <p>1.把图片拖拽到桌面</p>
+                <p>2.把后缀名改为.zip</p>
+                <p>3.打开压缩包，运行主程序</p>
+                <p></p>
+                <p>如果有小助手:</p>
+                <p>1.打开文件资源管理器，在地址栏输入%temp%（或手动进入临时目录）</p>
+                <p>2.把图片拖拽到临时目录</p>
+                <p>3.把后缀名改为.zip</p>
+                <p>4.打开压缩包，运行主程序</p>
             </div>
-            
-            <p><strong>图片路径示例：</strong></p>
-            <div class="code-block">图片路径: images/您的图片文件名.jpg</div>
-            
-            <p><strong>支持的图片格式：</strong>JPG, PNG, GIF, SVG, WebP</p>
-            <p><strong>建议图片尺寸：</strong>至少600×400像素，以确保清晰度</p>
         </section>
-        
         <!-- 第二个大块：图片和文字小块 -->
         <section class="grid-section">
-            <h2>特色功能展示</h2>
+            <h2>下载</h2>
             <div class="grid-container">
                 <!-- 项目1 -->
                 <div class="grid-item">
                     <!-- 替换下面这行代码中的图片路径 -->
-                    <img src="images/design.jpg" alt="现代设计" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="placeholder-image" style="display:none;">design.jpg (图片未找到)</div>
-                    <div class="item-description">Windows 10风格强调简洁的线条和清晰的视觉层次，创造直观的用户界面。</div>
-                </div>
-                
-                <!-- 项目2 -->
-                <div class="grid-item">
-                    <!-- 替换下面这行代码中的图片路径 -->
-                    <img src="images/layout.jpg" alt="响应式布局" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="placeholder-image" style="display:none;">layout.jpg (图片未找到)</div>
-                    <div class="item-description">自适应布局确保在任何屏幕尺寸上都能提供优秀的浏览体验，从手机到桌面设备。</div>
-                </div>
-                
-                <!-- 项目3 -->
-                <div class="grid-item">
-                    <!-- 替换下面这行代码中的图片路径 -->
-                    <img src="images/animation.jpg" alt="流畅动画" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="placeholder-image" style="display:none;">animation.jpg (图片未找到)</div>
-                    <div class="item-description">流畅的过渡动画和微交互效果增强用户体验，使操作更加自然直观。</div>
-                </div>
-                
-                <!-- 项目4 -->
-                <div class="grid-item">
-                    <!-- 替换下面这行代码中的图片路径 -->
-                    <img src="images/darkmode.jpg" alt="暗色模式" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="placeholder-image" style="display:none;">darkmode.jpg (图片未找到)</div>
-                    <div class="item-description">支持浅色和深色主题，根据用户偏好或环境光线自动切换，保护视力。</div>
-                </div>
-                
-                <!-- 项目5 -->
-                <div class="grid-item">
-                    <!-- 替换下面这行代码中的图片路径 -->
-                    <img src="images/cards.jpg" alt="卡片设计" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="placeholder-image" style="display:none;">cards.jpg (图片未找到)</div>
-                    <div class="item-description">卡片式设计将内容模块化，使信息组织更加清晰，便于用户理解和浏览。</div>
-                </div>
-                
-                <!-- 项目6 -->
-                <div class="grid-item">
-                    <!-- 替换下面这行代码中的图片路径 -->
-                    <img src="images/icons.jpg" alt="简洁图标" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="placeholder-image" style="display:none;">icons.jpg (图片未找到)</div>
-                    <div class="item-description">简洁明了的图标系统帮助用户快速识别功能，提高操作效率和准确性。</div>
+                    <img src="images/B7.png" alt="Beta7" class="item-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    
+                    <div class="item-description">Classroom Liberator B7 Normal.exe</div>
                 </div>
             </div>
         </section>
-        
-        <!-- 备用方案：占位图片区域 -->
-        <section class="upload-section">
-            <h3>如果没有自己的图片怎么办？</h3>
-            <p>您可以使用以下免费图库网站获取高质量的图片：</p>
-            <ul>
-                <li><a href="https://unsplash.com" target="_blank">Unsplash</a> - 高质量的免费照片</li>
-                <li><a href="https://pixabay.com" target="_blank">Pixabay</a> - 免费图片和矢量图</li>
-                <li><a href="https://www.pexels.com" target="_blank">Pexels</a> - 免费库存照片</li>
-            </ul>
-            <p>下载图片后，将其放入项目的"images"文件夹中，然后更新上面的图片路径即可。</p>
-        </section>
-    </div>
     
     <!-- 页脚 -->
     <footer class="footer">
-        <p>© 2023 Windows 10风格网页示例 | 专为GitHub Pages设计 | 使用HTML5和CSS3构建</p>
+        <p>CLassroom Liberator  by Jumper</p>
     </footer>
     
     <script>
@@ -370,7 +309,7 @@
             closeBtn.addEventListener('click', function() {
                 this.style.backgroundColor = '#d64545';
                 setTimeout(() => {
-                    this.style.backgroundColor = '#ff5f57';
+               23:13 2026/1/21     this.style.backgroundColor = '#ff5f57';
                 }, 200);
                 alert('在实际应用中，点击此处可关闭窗口');
             });
